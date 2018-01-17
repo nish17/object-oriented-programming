@@ -1,14 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+#define SIZE 10
 class Stack{
-  // int n=10;
-  int _array1[10],_array2[20];
+  // int n=SIZE;
+  int _array1[SIZE],_array2[2*SIZE];
   int topOfStack;
   public:
+    Stack(){
+      topOfStack = -1;
+    }  
     void push(int n){
-      if(topOfStack < 10) _array1[++topOfStack] = n;
-      else if(topOfStack > 10) _array2[++topOfStack] = n;
+      if(topOfStack < SIZE) _array1[++topOfStack] = n;
+      else if(topOfStack > SIZE) _array2[++topOfStack] = n;
     }
     void pop(){
       topOfStack--;
@@ -17,7 +20,6 @@ class Stack{
     * eliminated Repetitive code by creating subPrint function
     */
     void subPrint(int arr[]){ 
-      cout << "current value of top of stack " << topOfStack << endl;
       for(int i=topOfStack; i>=0; i--){
         cout << arr[i] << " ";
       }     
@@ -28,43 +30,40 @@ class Stack{
     * to _array2 which is of double the size of _array1.
     */
     void resetStack(){
-      if(topOfStack == 9){
-        // cout << "Stack1 is FULL!"<<endl;
-        for(int i=9; i>=0; i--){
+      if(topOfStack == SIZE-1){
+        cout << "Stack2:: ";
+        for(int i=SIZE-1; i>=0; i--){
           int l = 0;
-          _array2[l] = _array1[i];
-          cout << _array2[l] << " ";
-          l++;
-        }cout << endl;
-        cout << "current value of top of stack " << topOfStack << endl;
-        Stack();
-        subPrint(_array2);
+          _array2[l++] = _array1[i];
+          cout <<_array2[l-1] << " ";
+        }
+        cout << endl;
+        topOfStack = -1;
       }
-    }
+    } 
     /*
     * prints in the required form
     */
     void print(){
-      if(topOfStack < 9){
+      if(topOfStack < SIZE-1){
         cout << "Stack1:: "; 
         subPrint(_array1);        
       }
-      else if(topOfStack > 9 && topOfStack <20){
+      else if(topOfStack > SIZE-1 && topOfStack <2*SIZE){
         cout << "Stack1:: "; 
         subPrint(_array2);      
       }
-      else if(topOfStack == 9){
-        cout << "Stack1 is now full\n";
+      else if(topOfStack == SIZE-1){
+        cout << "Stack1 is now full\nStack1::";
         subPrint(_array1);
         resetStack();
+        cout << "elements moved to stack2\n";
         // cout << "2=>";
         // subPrint(_array2);
         return;
       }
     }
-    Stack(){
-      topOfStack = -1;
-    }
+
 };
 
 
