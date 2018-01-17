@@ -13,6 +13,11 @@ class Stack{
     void pop(){
       topOfStack--;
     }
+
+    /*
+    * After first _array1 gets fully populated, copying all the elements
+    * to _array2 which is of double the size of _array1.
+    */
     void resetStack(){
       if(topOfStack > 9){
         cout << "Stack1 is FULL!"<<endl;
@@ -21,23 +26,32 @@ class Stack{
         }
       }
     }
+    /*
+    * eliminated Repetitive code by creating subPrint function
+    */
+    void subPrint(int arr[]){ 
+      for(int i=0; i<=topOfStack; i++){
+        cout << arr[i] << " ";
+      }     
+      cout << endl; 
+    }
+    /*
+    * prints in the required form
+    */
     void print(){
       if(topOfStack < 9){
         cout << "Stack1:: "; 
-        for(int i=0; i<=topOfStack; i++){
-          cout << _array1[i] << " ";
-        }
-        cout << endl;        
+        subPrint(_array1);        
       }
       else if(topOfStack > 9 && topOfStack <20){
         cout << "Stack1:: "; 
-        for(int i=0; i<=topOfStack; i++){
-          cout << _array2[i] << " ";
-        }
-        cout << endl;        
+        subPrint(_array2);      
       }
-      else{
-        cout << "Stack2 is full";
+      else if(topOfStack == 9){
+        cout << "Stack1 is now full\n";
+        subPrint(_array1);
+        resetStack();
+        subPrint(_array2);
         return;
       }
     }
@@ -54,7 +68,6 @@ int main(){
     cout << "Input: ";
     cin >> t;
     stack.push(t);
-    stack.resetStack();
     stack.print();
   }
 }
