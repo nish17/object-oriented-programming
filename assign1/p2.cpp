@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define SIZE 10
+#define SIZE 10 // Stack SIZE is limited to 10 elements
 class Stack{
   // int n=SIZE;
   int _array1[SIZE],_array2[2*SIZE];
@@ -8,11 +8,16 @@ class Stack{
   public:
     Stack(){
       topOfStack = -1;
-    }  
+    }
+    /*
+    * push element onto the stack
+    */  
     void push(int n){
       if(topOfStack < SIZE) _array1[++topOfStack] = n;
-      else if(topOfStack > SIZE) _array2[++topOfStack] = n;
     }
+    /*
+    * Pops element from the stack
+    */
     void pop(){
       topOfStack--;
     }
@@ -76,4 +81,5 @@ int main(){
     stack.push(t);
     stack.print();
   }
+  return 0;
 }
