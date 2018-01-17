@@ -1,2 +1,2 @@
 # object-oriented-programming
-## assigments
+## assignments
