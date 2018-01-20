@@ -1,20 +1,29 @@
 #include <bits/stdc++.h>
-#include <iostream>
 using namespace std;
 #define SIZE 5
 class Messenger{
   public:
     int id;
     string name,messages;
+    /*
+    * sets the input to the data members
+    */
     void set(int n, string m){
       id = n;
       name = m;
     }
+    /*
+    * sets the input string to the destination node also to the caller node
+    */
     void sendMessage(Messenger m1[],int id2, string s){
       this->messages = s;
       m1[id2].messages = s;
     }
 };
+/*
+* This function is not a member function of the above class,
+* It finds the index of source and destination
+*/
 int searchIndex(int x,Messenger m[]){
   int z;
   for(int i=0; i<SIZE; i++){
@@ -28,22 +37,33 @@ int main(){
   int x,s,d;
   string y,m,m1;
   Messenger node[SIZE];
+  /*
+  * Input Section
+  */
   for(int i=0; i< SIZE; i++){
     cout << "Enter name and ID: ";
     cin >> y >> x;
     node[i].set(x,y);
   }
+  /*
+  * Shows all the input details
+  */
   cout << "\nNode details:\n";
   for(int i=0; i< SIZE; i++) cout << "Node name: "<<node[i].name << " ID: " <<node[i].id << endl;
-  int count = 0;
+  /*
+  * Message functionality
+  */
+  int count = 0; /* Counts number of messages transmitted */
   while(1){
-    cout << "\n\n\n" << endl;
+    cout << "\n" << endl;
     cout << "Type your message: ";
 
     // getline (cin, m);
+    // cin.get(cin, m);
+    // cin.ignore();
     cin >> m;
     // gets(m);
-    
+        
     if(m == "STOP" || m=="stop"){ 
       cout << "Total number of messages Transmitted " << count << endl;  
       exit(1);
