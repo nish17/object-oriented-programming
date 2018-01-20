@@ -37,14 +37,14 @@ class pcb{
     /*
     * returns true if both objects (ICs) have same area 
     */
-    int sameArea(pcb IC1, pcb IC2){
-      if(IC1.area() == IC2.area()) return 1;
+    int sameArea(pcb IC2){
+      if(this->area() == IC2.area()) return 1;
       else return 0;
     }
 };
 
 int main(){
-  pcb IC1, IC2, IC3;
+  pcb IC1, IC2;
 
   IC1.set(1,5,2.5);
   IC2.set(1,5,18.9);
@@ -52,7 +52,7 @@ int main(){
   IC1.show();
   IC2.show();
 
-  if(IC3.sameArea(IC1,IC2)) cout << "\nBoth ICs have same area\n";
+  if(IC1.sameArea(IC2)) cout << "\nBoth ICs have same area\n";
   else cout << "\nDifferent area\n";
 
 
