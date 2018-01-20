@@ -1,20 +1,18 @@
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
-#define SIZE 3
+#define SIZE 5
 class Messenger{
   public:
     int id;
     string name,messages;
-    // string receiveMessage(Messenger m2, string s){
-    //   return "s";
-    // }
     void set(int n, string m){
       id = n;
       name = m;
     }
-    void sendMessage(Messenger m1, string s){
-      m1.messages = s;
+    void sendMessage(Messenger m1[],int id2, string s){
+      this->messages = s;
+      m1[id2].messages = s;
     }
 };
 int searchIndex(int x,Messenger m[]){
@@ -36,27 +34,31 @@ int main(){
     node[i].set(x,y);
   }
   cout << "\nNode details:\n";
-  for(int i=0; i< SIZE; i++){
-    cout << "Node name: "<<node[i].name << " ID: " <<node[i].id << endl;
-  }
+  for(int i=0; i< SIZE; i++) cout << "Node name: "<<node[i].name << " ID: " <<node[i].id << endl;
   int count = 0;
   while(1){
     cout << "\n\n\n" << endl;
     cout << "Type your message: ";
+
     // getline (cin, m);
     cin >> m;
     // gets(m);
-    if(m == "STOP" || m=="stop") exit(1);
+    
+    if(m == "STOP" || m=="stop"){ 
+      cout << "Total number of messages Transmitted " << count << endl;  
+      exit(1);
+    }
     cout << "Input source and destination node ID: ";
-    cin >> s >> d;
+    cin >> s >> d; count++;
 
     int x = searchIndex(s,node);
     int y = searchIndex(d,node);
+    node[x].sendMessage(node,y,m);
     
     // cout << "sender's index " <<x << endl;
     // cout << "reciever's index " << y << endl;
-    cout << "Sending Message " << m << " to destination Node name " << node[y].name << " ID "<< node[y].id<< endl;
-    cout << "Received Message " << m << " from source Node name " << node[x].name << " ID "<< node[x].id << endl;
+    cout << "Sending Message " << node[y].messages << " to destination Node name " << node[y].name << " ID "<< node[y].id<< endl;
+    cout << "Received Message " << node[x].messages << " from source Node name " << node[x].name << " ID "<< node[x].id << endl;
   }
   return 0;
 }
