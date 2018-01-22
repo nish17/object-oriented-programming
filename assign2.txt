@@ -1,0 +1,27 @@
+You can continue with the same problem whatever you have done in Assignment -1. In addition, do the following.
+
+ 
+
+1.      Refer to Qn B1 in Assignment 1
+
+ 
+
+a)      Use static member function to check how many IC objects are created? Just cout whenever u create an IC. 
+
+b)      Instead of set() function, use parameterized constructor IC(a,b) to set length=a and width=b.
+
+c)      Also include a default constructor to set default width and height of IC as 1, 1. Can you do it with default arguments for both length and width? Any ambiguity issues you get?
+
+d)      Use default destructor. Also you may define a scope block using delimiters {   } to check the validity of the objects outside the block.
+
+ 
+
+ 
+
+2.      Refer to Qn A1 in Assignment 1
+
+a)      Use constructor to initialize your stack.
+
+b)      Modify resetStack() as follows. Have a static global buffer of some MAX size inside stack class.  Once a stack object S1 is full, a static function resetStack() must move the contents of s1 to the global buffer. On exit of the program, the destructor has to print the buffer contents.
+
+ 
