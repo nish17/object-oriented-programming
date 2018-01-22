@@ -21,6 +21,9 @@ public:
   // {
   //   n--;
   // }
+  /*
+  * Static Variable, here its used for counting number of objects
+  */
   static int getCount()
   {
     return n;
@@ -36,7 +39,7 @@ public:
     width = 1;
   }
   /*
-  *
+  * This Constructor sets the value to the data members if values are passed while creating the objects 
   */
   PCB(float a, float b)
   {
@@ -44,24 +47,17 @@ public:
     length = a;
     width = b;
   }
+  /*
+  * Default Destructor
+  */
   ~PCB()
   {
     // decCount();
     cout << getCount() << " Objects destroyed\n";
   }
-
   /*
-    * sets the input values
+  * returns perimeter of IC
   */
-  // void set(int x, float y, float z)
-  // {
-  //   noOfICs = x;
-  //   length = y;
-  //   width = z;
-  // }
-  /*
-    * returns perimeter of IC
-    */
   float perimeter()
   {
     return (2 * (length + width));
@@ -95,7 +91,11 @@ public:
       return 0;
   }
 };
+/*
+* Declaration for the static variable
+*/
 int PCB::n;
+
 int main()
 {
   PCB IC1 = PCB(5, 2.5);
@@ -110,12 +110,16 @@ int main()
 
   /*
   * Assign2:QD 
+  * if IC4 object stays inside of the scope block, 
+  * then it doesnt get destroyed by the destructor,
+  * FOR the destructor to work properly, 
+  * Comment the paraenthesis below (take IC4 object out)  
   */
-  // {
-  PCB IC4;
-  // }
+  {
+    PCB IC4;
+  }
 
-  // IC4.show(); this object isnot accessible
+  // IC4.show(); this object isnot accessible, because its inside the scope
 
   if (IC1.sameArea(IC2))
     cout << "\nBoth ICs have same area\n";
