@@ -26,6 +26,8 @@
     "vector": "cpp",
     "__locale": "cpp",
     "typeindex": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "ios": "cpp",
+    "ostream": "cpp"
   }
 }

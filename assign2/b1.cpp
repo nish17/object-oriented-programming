@@ -8,28 +8,48 @@ class PCB
   float length, width;
 
 public:
-  void count()
+  /*
+  * increments the static variable 
+  * this function is placed inside both constructors
+  * it will be called everytime new object is created with or without arguments
+  */
+  void incCount()
   {
     n++;
   }
+  // void decCount()
+  // {
+  //   n--;
+  // }
+  static int getCount()
+  {
+    return n;
+  }
+  /*
+  * Default constructor, sets the value of length and width to 1
+  * this constructor gets called when no parameters are passed while creating the object
+  */
   PCB()
   {
+    incCount();
     length = 1;
     width = 1;
   }
+  /*
+  *
+  */
   PCB(float a, float b)
   {
-    count();
+    incCount();
     length = a;
     width = b;
   }
   ~PCB()
   {
+    // decCount();
+    cout << getCount() << " Objects destroyed\n";
   }
-  static int getCount()
-  {
-    return n;
-  }
+
   /*
     * sets the input values
   */
@@ -88,11 +108,20 @@ int main()
   IC1.show();
   IC2.show();
 
+  /*
+  * Assign2:QD 
+  */
+  // {
+  PCB IC4;
+  // }
+
+  // IC4.show(); this object isnot accessible
+
   if (IC1.sameArea(IC2))
     cout << "\nBoth ICs have same area\n";
   else
     cout << "\nDifferent area\n";
 
-  cout << "\nNumber of objects created are " << IC1.getCount() << endl;
+  cout << "\nNumber of objects created: " << IC1.getCount() << endl;
   return 0;
 }
