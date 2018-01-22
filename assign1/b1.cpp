@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class pcb
+class PCB
 {
 
   int noOfICs;
@@ -14,13 +14,13 @@ public:
     n++;
   }
 
-  pcb(float a, float b)
+  PCB(float a, float b)
   {
     count();
     length = a;
     width = b;
   }
-  ~pcb()
+  ~PCB()
   {
   }
   static int getCount()
@@ -62,7 +62,7 @@ public:
   /*
     * returns true if both objects (ICs) have same area 
     */
-  int sameArea(pcb IC2)
+  int sameArea(PCB IC2)
   {
     if (this->area() == IC2.area())
       return 1;
@@ -70,11 +70,11 @@ public:
       return 0;
   }
 };
-int pcb::n;
+int PCB::n;
 int main()
 {
-  pcb IC1 = pcb(5, 2.5);
-  pcb IC2 = pcb(5, 18.9);
+  PCB IC1 = PCB(5, 2.5);
+  PCB IC2 = PCB(5, 18.9);
   // IC2;
 
   // IC1.set(1,5,2.5);
