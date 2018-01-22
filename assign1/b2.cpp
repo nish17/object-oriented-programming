@@ -90,7 +90,7 @@ int main()
     */
     // t2 = clock();
     // cout << (double)t1 - t2 / CLOCKS_PER_SEC << endl;
-    // if (t1 >= 10000
+    // if (t1 >= 10000)
     //   exit(1);
     // printf("%2.1f\n", (double)t1 - t2 / CLOCKS_PER_SEC);
     cout << "Input source and destination node ID: ";
