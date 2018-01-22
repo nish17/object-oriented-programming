@@ -3,7 +3,6 @@ using namespace std;
 
 class PCB
 {
-
   int noOfICs;
   static int n;
   float length, width;
@@ -13,7 +12,11 @@ public:
   {
     n++;
   }
-
+  PCB()
+  {
+    length = 1;
+    width = 1;
+  }
   PCB(float a, float b)
   {
     count();
@@ -55,7 +58,9 @@ public:
     */
   void show()
   {
-    cout << "No of ICs in PCB: " << noOfICs << endl;
+    cout << "\nNo of ICs in PCB: " << getCount() << endl;
+    cout << "\nLength of IC " << length << endl;
+    cout << "\nwidth of IC " << width << endl;
     cout << "\nperimeter of IC: " << perimeter() << endl;
     cout << "\nArea of IC: " << area() << endl;
   }
@@ -76,7 +81,7 @@ int main()
   PCB IC1 = PCB(5, 2.5);
   PCB IC2 = PCB(5, 18.9);
   // IC2;
-
+  PCB IC3 = PCB();
   // IC1.set(1,5,2.5);
   // IC2.set(1,5,18.9);
 
@@ -88,6 +93,6 @@ int main()
   else
     cout << "\nDifferent area\n";
 
-  cout << "Number of objects created are " << IC1.getCount() << endl;
+  cout << "\nNumber of objects created are " << IC1.getCount() << endl;
   return 0;
 }
