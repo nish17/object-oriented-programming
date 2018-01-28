@@ -22,6 +22,8 @@ d)      Use default destructor. Also you may define a scope block using delimite
 
 a)      Use constructor to initialize your stack.
 
-b)      Modify resetStack() as follows. Have a static global buffer of some MAX size inside stack class.  Once a stack object S1 is full, a static function resetStack() must move the contents of s1 to the global buffer. On exit of the program, the destructor has to print the buffer contents.
+b)      Modify resetStack() as follows. Have a static global buffer of some MAX size inside stack class.  
+        Once a stack object S1 is full, a static function resetStack() must move the contents of s1 to the global buffer. 
+        On exit of the program, the destructor has to print the buffer contents.
 
  
