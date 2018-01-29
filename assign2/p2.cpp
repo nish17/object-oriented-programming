@@ -4,11 +4,11 @@ using namespace std;
 
 class Stack
 {
-  int _array1[SIZE];
+  int _array1[SIZE], _array2[SIZE];
   int topOfStack;
+  static int _buffer[2 * SIZE];
 
 public:
-  static int _buffer[2 * SIZE];
   Stack()
   {
     topOfStack = -1;
@@ -27,10 +27,13 @@ public:
   }
   ~Stack()
   {
+    // topOfStack = SIZE;
     cout << "Destructor invoked: \n";
+    cout << "this is print buffer method: \n";
     printBuffer();
+
+    cout << "this is subprint method \n";
     subPrint(_buffer);
-    print();
     exit(1);
   }
   /*
@@ -65,7 +68,7 @@ public:
         cout << _buffer[l - 1] << " ";
       }
       cout << endl;
-      topOfStack = -1;
+      // topOfStack = -1;
     }
   }
   /*
@@ -78,17 +81,12 @@ public:
       cout << "Stack1:: ";
       subPrint(_array1);
     }
-    else if (topOfStack > SIZE - 1 && topOfStack < 2 * SIZE)
-    {
-      cout << "Stack1::abcdfd ";
-      subPrint(_buffer);
-    }
     else if (topOfStack == SIZE - 1)
     {
       cout << "Stack1 is now full\nStack1::";
       subPrint(_array1);
-      resetStack();
       cout << "elements moved to buffer\n";
+      resetStack();
       // cout << "2=>";
       // subPrint(_buffer);
       return;
@@ -125,6 +123,6 @@ int main()
     stack.push(t);
     stack.print();
   }
-  stack.printBuffer();
+  // stack.printBuffer();
   return 0;
 }
