@@ -1,18 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define SIZE 10 // Stack SIZE is limited to 10 elements
+
 class Stack
 {
-  // int n=SIZE;
-  int _array1[SIZE], _buffer[2 * SIZE];
+  int _array1[SIZE];
   int topOfStack;
-  // static int buffer[SIZE];
 
 public:
+  static int _buffer[2 * SIZE];
   Stack()
   {
     topOfStack = -1;
-    // buffer = new int[SIZE];
   }
   /*
     * eliminated Repetitive code by creating subPrint function
@@ -20,6 +19,7 @@ public:
   void subPrint(int arr[])
   {
     for (int i = topOfStack; i >= 0; i--)
+    // for (int i = 0; i <= topOfStack; i++)
     {
       cout << arr[i] << " ";
     }
@@ -27,10 +27,10 @@ public:
   }
   ~Stack()
   {
-    cout << "Contents of buffer\n";
+    cout << "Destructor invoked: \n";
+    printBuffer();
     subPrint(_buffer);
-    cout << endl;
-    cout << "buffer flushed\n";
+    print();
     exit(1);
   }
   /*
@@ -80,7 +80,7 @@ public:
     }
     else if (topOfStack > SIZE - 1 && topOfStack < 2 * SIZE)
     {
-      cout << "Stack1:: ";
+      cout << "Stack1::abcdfd ";
       subPrint(_buffer);
     }
     else if (topOfStack == SIZE - 1)
@@ -94,20 +94,37 @@ public:
       return;
     }
   }
+  void printBuffer()
+  {
+    for (int i = topOfStack; i >= 0; i--)
+    {
+      cout << _buffer[i] << " ";
+    }
+    cout << endl;
+  }
 };
-
+int Stack::_buffer[2 * SIZE];
 int main()
 {
   Stack stack;
   int t;
-  while (1)
+  // while (1)
+  for (int i = 0; i < SIZE; i++)
   {
     cout << "Input: ";
     cin >> t;
-    if (t == -1)
-      stack.~Stack();
+    /*
+    *Condition for stopping the program
+    * i.e if the input value is -1 then it will execute
+    * the destructor 
+    */
+    // if (t == -1)
+    // {
+    //   stack.~Stack();
+    // }
     stack.push(t);
     stack.print();
   }
+  stack.printBuffer();
   return 0;
 }
