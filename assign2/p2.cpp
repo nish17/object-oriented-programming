@@ -4,7 +4,7 @@ using namespace std;
 
 class Stack
 {
-  int unique;
+  int unique; //maybe useful
   int _array1[SIZE];
   int topOfStack;
   static int _buffer[2 * SIZE];
@@ -32,12 +32,7 @@ public:
     cout << "Destructor invoked: \n";
     // cout << "this is print buffer method: \n";
     printBuffer();
-
-    // cout << "this is subprint method \n";
-    // subPrint(_buffer);
-    // unique = 999;
-    // resetStack();
-    exit(1);
+    // exit(1);
   }
   /*
     * push element onto the stack
@@ -54,7 +49,9 @@ public:
   {
     topOfStack--;
   }
-
+  /*
+  * returns the last element on the Stack
+  */
   int peek(int arr[])
   {
     int k = arr[topOfStack];
@@ -94,7 +91,9 @@ public:
     //   cout << endl;
     // }
   }
-
+  /*
+* similar to resetStack method
+*/
   void buffer_resetStack()
   {
     if (topOfStack == SIZE - 1)
@@ -128,9 +127,12 @@ public:
       return;
     }
   }
+  /*
+  *prints the contents of buffer 
+  */
   void printBuffer()
   {
-    for (int i = 0; i <= topOfStack; i++)
+    for (int i = 0; i < topOfStack; i++)
     {
       cout << _buffer[i] << " ";
     }
