@@ -4,7 +4,8 @@ using namespace std;
 
 class Stack
 {
-  int _array1[SIZE], _array2[SIZE];
+  int unique;
+  int _array1[SIZE];
   int topOfStack;
   static int _buffer[2 * SIZE];
 
@@ -27,13 +28,15 @@ public:
   }
   ~Stack()
   {
-    // topOfStack = SIZE;
+    topOfStack = SIZE;
     cout << "Destructor invoked: \n";
-    cout << "this is print buffer method: \n";
+    // cout << "this is print buffer method: \n";
     printBuffer();
 
-    cout << "this is subprint method \n";
-    subPrint(_buffer);
+    // cout << "this is subprint method \n";
+    // subPrint(_buffer);
+    // unique = 999;
+    // resetStack();
     exit(1);
   }
   /*
@@ -52,13 +55,20 @@ public:
     topOfStack--;
   }
 
+  int peek(int arr[])
+  {
+    int k = arr[topOfStack];
+    pop();
+    return k;
+  }
   /*
     * After first _array1 gets fully populated, copying all the elements
     * to _buffer which is of double the size of _array1.
+    * buffer array is not accessible outside of the resetStack Scope
     */
   void resetStack()
   {
-    if (topOfStack == SIZE - 1)
+    if (topOfStack == SIZE - 1 && unique != 999)
     {
       cout << "Contents of buffer:: ";
       for (int i = SIZE - 1; i >= 0; i--)
@@ -69,6 +79,32 @@ public:
       }
       cout << endl;
       // topOfStack = -1;
+    }
+
+    /*
+  * unique method also didn't work
+  */
+    // else if (unique == 999)
+    // {
+    //   cout << "contents of buffer:: ";
+    //   for (int i = SIZE - 1; i >= 0; i--)
+    //   {
+    //     cout << _buffer[i] << " ";
+    //   }
+    //   cout << endl;
+    // }
+  }
+
+  void buffer_resetStack()
+  {
+    if (topOfStack == SIZE - 1)
+    {
+      for (int i = topOfStack; i >= 0; i--)
+      {
+        _buffer[i] = peek(_array1);
+        // cout << _buffer[i] << " ";
+      }
+      // cout << endl;
     }
   }
   /*
@@ -86,7 +122,7 @@ public:
       cout << "Stack1 is now full\nStack1::";
       subPrint(_array1);
       cout << "elements moved to buffer\n";
-      resetStack();
+      buffer_resetStack();
       // cout << "2=>";
       // subPrint(_buffer);
       return;
@@ -94,7 +130,7 @@ public:
   }
   void printBuffer()
   {
-    for (int i = topOfStack; i >= 0; i--)
+    for (int i = 0; i <= topOfStack; i++)
     {
       cout << _buffer[i] << " ";
     }
