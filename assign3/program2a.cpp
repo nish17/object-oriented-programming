@@ -38,7 +38,7 @@ public:
 };
 Microsoft::Microsoft(int a, int b) : Google(a, b)
 {
-  //do something
+  //it should work now
 }
 
 int main()
