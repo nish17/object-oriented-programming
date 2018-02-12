@@ -35,9 +35,13 @@ public:
     cout << "Total Employees " << this->noOfEmployees << endl;
   }
 };
-class Microsoft : public Google
+class Microsoft : private Google
 {
 public:
+  void new_input() { this->input(); }
+  void new_totalEmployees() { this->totalEmployees(); }
+  void new_display() { this->display(); }
+
   Microsoft(int a, int b);
 };
 Microsoft::Microsoft(int a, int b) : Google(a, b)

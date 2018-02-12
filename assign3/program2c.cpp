@@ -35,7 +35,7 @@ public:
     cout << "Total Employees " << this->noOfEmployees << endl;
   }
 };
-class Microsoft : public Google
+class Microsoft : protected Google
 {
 public:
   Microsoft(int a, int b);
