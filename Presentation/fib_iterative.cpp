@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void printSeries(int n, int c)
+void printSeries(long long int n, int c)
 {
-  int f1 = 0, f2 = 1, add;
+  long long int f1 = 0, f2 = 1, add;
   if (c == 1)
   {
     cout << f1 << " " << f2 << " ";
@@ -30,7 +30,8 @@ void printSeries(int n, int c)
 
 int main()
 {
-  int n, c;
+  long long int n;
+  int c;
   double t;
   time_t start, end;
   cout << "Input: ";
