@@ -31,11 +31,17 @@ void printSeries(int n, int c)
 int main()
 {
   int n, c;
+  double t;
+  time_t start, end;
   cout << "Input: ";
   cin >> n;
   cout << "Print whole series? press '1'\nPrint only sum? press '2'\n";
   cin >> c;
+  start = clock();
   printSeries(n, c);
+  end = clock();
+  t = ((double)(end - start)) / CLOCKS_PER_SEC;
+  cout << "fibonacci() took " << t << " seconds to execute\n";
   return 0;
 }
 // 0   1  1   2
