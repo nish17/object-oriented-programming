@@ -17,10 +17,12 @@ public:
     try
     {
       _array = new int[i * size];
+      if (_array == NULL)
+        throw "Not enough memory available\n";
     }
-    catch (...)
+    catch (const char *m)
     {
-      //
+      cout << m;
     }
   }
   int getSize()
