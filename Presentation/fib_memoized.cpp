@@ -1,16 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+vector<long long int> f(100);
 long long int fibonacci(long long int x)
 {
   if (x <= 1)
     return 1;
-  else
-    return fibonacci(x - 1) + fibonacci(x - 2);
+  if (f[x] != -1)
+    return f[x];
+  f[x] = fibonacci(x - 1) + fibonacci(x - 2);
+  return f[x];
 }
 
 int main()
 {
+  for (int i = 0; i < f.size(); i++)
+    f[i] = -1;
   long long int x;
   double t;
   cout << "Input: ";
