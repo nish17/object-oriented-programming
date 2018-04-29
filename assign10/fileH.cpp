@@ -26,15 +26,11 @@ int main()
 
   for (int n; f >> n;)
   {
-    value = n;
     for (int i = 0; i < series.size(); i++)
-    {
       if (n == series[i])
-      {
         cout << n << ". A000055\n";
-      }
-    }
-    // cout << n << endl;
+      else
+        continue;
     count++;
   }
   f.close();
