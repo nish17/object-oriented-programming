@@ -1,28 +1,23 @@
-// #include <iostream>
 #include <bits/stdc++.h>
-
 using namespace std;
 
 class Matrix
 {
   int D;
-  vector<int> m1[10][10];
+  int a[10][10];
 
 public:
-  Matrix(int d = 2)
+  void setDimension(int c)
   {
-    D = d;
-    // vector<int> m1[D][D];
+    D = c;
   }
-  void inputMatrix()
+  void getInput()
   {
-    int k;
     for (int i = 0; i < D; i++)
     {
       for (int j = 0; j < D; j++)
       {
-        cin >> k;
-        m1[i][j].push_back(k);
+        cin >> a[i][j];
       }
     }
   }
@@ -32,57 +27,69 @@ public:
     {
       for (int j = 0; j < D; j++)
       {
-        cout << m1[i][j] << " ";
+        cout << this->a[i][j] << " ";
       }
       cout << endl;
     }
   }
-  // Matrix operator+(Matrix mm)
-  // {
-  //   Matrix result;
-  //   for (int i = 0; i < D; i++)
-  //   {
-  //     for (int j = 0; j < D; j++)
-  //     {
-  //       result[i][j] = this->[i][j] + mm[i][j];
-  //     }
-  //     cout << endl;
-  //   }
-  // }
-
-  void add()
+  Matrix operator+(Matrix m)
+  {
+    Matrix result;
+    for (int i = 0; i < D; i++)
+    {
+      for (int j = 0; j < D; j++)
+      {
+        this->a[i][j] = this->a[i][j] + m.a[i][j];
+      }
+    }
+    return *this;
+    // result.printMatrix();
+  }
+  Matrix operator*(const int m)
   {
     for (int i = 0; i < D; i++)
     {
       for (int j = 0; j < D; j++)
       {
-        cout << m1[i][j] << " ";
+        this->a[i][j] = this->a[i][j] * m;
       }
-      cout << endl;
     }
-  }
-  void main_menu()
-  {
-    int ch;
-    Matrix m2, m3;
-    cout << "Press 1. Matrix addition\nPress 2. Matrix Scaling\n";
-    cin >> ch;
-    if (ch == 1)
-    {
-      cout << "Input values for matrix 1:\n";
-      m2.inputMatrix();
-      cout << "Input values for matrix 2:\n";
-      m3.inputMatrix();
-    }
-    else if (ch == 2)
-    {
-    }
+    return *this;
   }
 };
-
 int main()
 {
-  Matrix m;
-  m.main_menu();
+  Matrix s1, s2;
+
+  int ch, dd;
+  cout << "Press 1. Add two Matrices\n";
+  cout << "Press 2. Scale Matrix\n";
+  cin >> ch;
+  cout << "Input dimension of matrix\n";
+  cin >> dd;
+  if (ch == 1)
+  {
+    cout << "Input values for 1st matrix:\n";
+    s1.setDimension(dd);
+    s1.getInput();
+    cout << "Input values for 2nd matrix:\n";
+    s2.setDimension(dd);
+    s2.getInput();
+    s1 = s1 + s2;
+    s1.printMatrix();
+  }
+  else if (ch == 2)
+  {
+
+    int s;
+    cout << "Input values for 1st matrix:\n";
+    s1.setDimension(dd);
+    s1.getInput();
+    cout << "Input scaling factor\n";
+    cin >> s;
+    s1 = s1 * s;
+    s1.printMatrix();
+  }
+
   return 0;
 }
